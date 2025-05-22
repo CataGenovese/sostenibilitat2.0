@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incendios en Catalunya</title>
+  <link rel="stylesheet" href="estilos.css">
+  <!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- PapaParse -->
+<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+
+</head>
+<body>
+
+  <nav>
+    <a href="#" data-section="inicio">Inicio</a>
+    <a href="#" data-section="consultas">Consultas</a>
+    <a href="#" data-section="mapa_incendis">Mapa</a>
+
+  </nav>
+
+  <main class="content">
+  <section id="inicio" class="active">
+    <h1>Incendios Forestales en Catalunya</h1>
+    <p>Consulta los incendios registrados por fecha o por comarca. Usa la navegación para comenzar.</p>
+  </section>
+
+  <section id="consultas">
+    <h2>Consulta de Incendios</h2>
+
+    <label for="fecha-select">Selecciona una fecha:</label>
+    <select id="fecha-select">
+      <option value="">-- Elige una fecha --</option>
+    </select>
+
+    <label for="comarca-select">Selecciona una comarca:</label>
+    <select id="comarca-select">
+      <option value="">-- Elige una comarca --</option>
+    </select>
+
+    <h3>Detalles:</h3>
+    <pre id="details"></pre>
+  </section>
+
+  <section id="mapa_incendis">
+    <h2>Mapa d'Incendis</h2>
+    <div id="map_inc" style="height: 500px;"></div>
+  </section>
+</main>
+
+  <script src="/script/mapa.js"></script>
+  <script src="main.js"></script>
+
+  <script>
+  let mapaCargado = false;
+
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = link.getAttribute('data-section');
+
+      // Oculta todas las secciones
+      document.querySelectorAll('main > section').forEach(sec => sec.classList.remove('active'));
+
+      // Muestra la sección seleccionada
+      const targetSection = document.getElementById(target);
+      targetSection.classList.add('active');
+
+      // Si es el mapa, inicialízalo una sola vez
+      if (target === 'mapa_incendis' && !mapaCargado) {
+        initMapa();
+        mapaCargado = true;
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
