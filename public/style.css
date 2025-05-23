@@ -1,0 +1,37 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  body {
+    background: url('/img/unnamed.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .image-button img {
+    width: 200px;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .image-button img:hover {
+    transform: scale(1.1);
+  }
+  

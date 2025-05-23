@@ -102,16 +102,6 @@ pre#details {
   font-family: 'Courier New', monospace;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  nav {
-    flex-direction: column;
-  }
-  nav a {
-    margin: 10px 0;
-  }
-}
-
 /* Mapa con estilo */
 #map_inc {
   height: 500px;
