@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Incendios en Catalunya</title>
   <link rel="stylesheet" href="estilos.css">
   <!-- Leaflet -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<!-- PapaParse -->
-<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+  <!-- PapaParse -->
+  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <!-- Conexion API -->
+  <script defer src="/script/api.js"></script>
 
 </head>
+
 <body>
 
   <nav>
@@ -24,69 +29,110 @@
   </nav>
 
   <main class="content">
-  <section id="inicio" class="active">
-    <h1>Incendios Forestales en Catalunya</h1>
-    <p>Aquí encontrarás información sobre los incendios ocurridos dentro de Cataluña, sostenibilidad, acción climática y protección de los bosques.</p>
-    
-    <h3>Navegación</h3>
-    <p><b>Consultas:</b> Consulta los incendios registrados por fecha o por comarca.</p>
-    <p><b>Mapa:</b> Observa el mapa de incendios y zonas de riesgo.</p>
-    <p><b>API:</b> Utiliza la open API de la generalitat con los datos más actuales de 2025.</p>
-  </section>
+    <section id="inicio" class="active">
+      <h1>Incendios Forestales en Catalunya</h1>
+      <p>Aquí encontrarás información sobre los incendios ocurridos dentro de Cataluña, sostenibilidad, acción climática
+        y protección de los bosques.</p>
 
-  <section id="consultas">
-    <h2>Consulta de Incendios</h2>
+      <h3>Navegación</h3>
+      <p><b>Consultas:</b> Consulta los incendios registrados por fecha o por comarca.</p>
+      <p><b>Mapa:</b> Observa el mapa de incendios y zonas de riesgo.</p>
+      <p><b>API:</b> Utiliza la open API de la generalitat con los datos más actuales de 2025.</p>
 
-    <label for="fecha-select">Selecciona una fecha:</label>
-    <select id="fecha-select">
-      <option value="">-- Elige una fecha --</option>
-    </select>
+      <!--<section id="ods13">
+        <h1>ODS 13 - Acció pel Clima</h1>
+        <p>Els incendis forestals són una de les conseqüències greus del canvi climàtic. Descobreix com actuar.</p>
+    </section>
 
-    <label for="comarca-select">Selecciona una comarca:</label>
-    <select id="comarca-select">
-      <option value="">-- Elige una comarca --</option>
-    </select>
+    <section id="ods15">
+        <h1>ODS 15 - Vida Terrestre</h1>
+        <p>Protegir la biodiversitat forestal és essencial per garantir un futur sostenible.</p>
+    </section>-->
 
-    <h3>Detalles:</h3>
-    <pre id="details"></pre>
-  </section>
+    </section>
 
-  <section id="mapa_incendis">
-    <h2>Mapa d'Incendis</h2>
-    <div id="map_inc" style="height: 500px;"></div>
-  </section>
+    <section id="consultas">
+      <h2>Consulta de Incendios</h2>
 
-  <section id="API_GEN">
-    <h2>API Gencat</h2>
-  </section>
-</main>
+      <label for="fecha-select">Selecciona una fecha:</label>
+      <select id="fecha-select">
+        <option value="">-- Elige una fecha --</option>
+      </select>
 
+      <label for="comarca-select">Selecciona una comarca:</label>
+      <select id="comarca-select">
+        <option value="">-- Elige una comarca --</option>
+      </select>
+
+      <h3>Detalles:</h3>
+      <pre id="details"></pre>
+    </section>
+
+    <section id="mapa_incendis">
+      <h2>Mapa d'Incendis</h2>
+      <div id="map_inc" style="height: 500px;"></div>
+    </section>
+
+    <section id="API_GEN">
+      <h2>API Gencat</h2>
+      <p>Esta API de codigo abierto está basada en los incedios forestales de Catalunya en el año 2025, con detalle de
+        la fecha, el municipio en el cuando se han iniciado y las superficies forestales y no forestales afectadas, en
+        hectáreas.</p>
+
+      <h3>Tipos de datos</h3>
+      <p>DATA INCENDI: Data d’inici de l’incendi.</p>
+      <p>CODI COMARCA: Codi Idescat de la comarca.</p>
+      <p>COMARCA: Comarca d’inici de l’incendi.</p>
+      <p>CODI MUNICIPI: Codi Idescat del municipi.</p>
+      <p>TERMEMUNIC: Municipi d’inici de l’incendi.</p>
+      <p>HAARBRADES: Superfície forestal arbrada cremada, en hectàrees.</p>
+      <p>HANOARBRAD: Superfície forestal de matoll, herbàcia o pastura cremada, en hectàrees.</p>
+      <p>HAFORESTAL: Superfície forestal cremada, en hectàrees. Suma la columna HaArbrades + HaNoArbrades.</p>
+
+      <h3>Endpoints</h3>
+      <p></p>
+
+      <button onclick="obtenerIncendios({ data_incendi: '2025-01-11T00:00:00.000' })">Por Fecha</button>
+      <button onclick="obtenerIncendios({ codi_comarca: '11' })">Por Código Comarca</button>
+      <button onclick="obtenerIncendios({ comarca: 'Baix Llobregat' })">Por Nombre Comarca</button>
+      <button onclick="obtenerIncendios({ codi_municipi: '80898' })">Por Código Municipio</button>
+      <button onclick="obtenerIncendios({ termemunic: 'Gavà' })">Por Nombre Municipio</button>
+      <button onclick="obtenerIncendios({ haarbrades: '0' })">Hectáreas Arboladas = 0</button>
+      <button onclick="obtenerIncendios({ hanoarbrad: '0.006' })">Hect. No Arboladas = 0.006</button>
+      <button onclick="obtenerIncendios({ hanoforest: '0' })">Hect. No Forestales = 0</button>
+      <button onclick="obtenerIncendios({ haforestal: '0.006' })">Hect. Forestales = 0.006</button>
+      <pre id="output"></pre>
+
+    </section>
+  </main>
+  <!-- Scripts -->
   <script src="/script/mapa.js"></script>
   <script src="main.js"></script>
 
   <script>
-  let mapaCargado = false;
+    let mapaCargado = false;
 
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = link.getAttribute('data-section');
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = link.getAttribute('data-section');
 
-      // Oculta todas las secciones
-      document.querySelectorAll('main > section').forEach(sec => sec.classList.remove('active'));
+        // Oculta todas las secciones
+        document.querySelectorAll('main > section').forEach(sec => sec.classList.remove('active'));
 
-      // Muestra la sección seleccionada
-      const targetSection = document.getElementById(target);
-      targetSection.classList.add('active');
+        // Muestra la sección seleccionada
+        const targetSection = document.getElementById(target);
+        targetSection.classList.add('active');
 
-      // Si es el mapa, inicialízalo una sola vez
-      if (target === 'mapa_incendis' && !mapaCargado) {
-        initMapa();
-        mapaCargado = true;
-      }
+        // Si es el mapa, inicialízalo una sola vez
+        if (target === 'mapa_incendis' && !mapaCargado) {
+          initMapa();
+          mapaCargado = true;
+        }
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
+
 </html>
