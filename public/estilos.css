@@ -60,7 +60,9 @@ section:hover {
 }
 
 /* Encabezados */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: #1b5e20;
 }
 
@@ -131,7 +133,7 @@ pre#output {
   line-height: 1.5em;
   border: 1px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .legend i {
