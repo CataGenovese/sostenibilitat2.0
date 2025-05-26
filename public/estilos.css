@@ -145,3 +145,54 @@ pre#output {
   border-radius: 4px;
   background-color: gray;
 }
+
+#ods {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  color: #1b5e20;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#ods h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 3px solid #66bb6a;
+  padding-bottom: 0.3rem;
+}
+
+#ods h2 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  color: #388e3c;
+  font-weight: 700;
+}
+
+#ods ul {
+  list-style-type: disc;
+  padding-left: 1.6rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-top: 0.8rem;
+}
+
+#ods ul li {
+  margin-bottom: 0.8rem;
+}
+
+#ods ul li strong {
+  color: #2e7d32;
+  margin-right: 0.4rem;
+}
+
+.ods-note {
+  font-style: italic;
+  color: #4caf50;
+  margin-top: 1rem;
+  border-left: 4px solid #81c784;
+  padding-left: 1rem;
+  font-size: 0.9rem;
+}

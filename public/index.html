@@ -25,34 +25,26 @@
     <a href="#" data-section="consultas">Consultas</a>
     <a href="#" data-section="mapa_incendis">Mapa</a>
     <a href="#" data-section="API_GEN">API</a>
+    <a href="#" data-section="ods">ODS</a>
+
 
   </nav>
 
   <main class="content">
     <section id="inicio" class="active">
-      <h1>Incendios Forestales en Catalunya</h1>
-      <p>Aquí encontrarás información sobre los incendios ocurridos dentro de Cataluña, sostenibilidad, acción climática
-        y protección de los bosques.</p>
+      <h1>Incendios Forestales en Cataluña</h1>
+      <p> Aquí encontrarás información sobre los incendios ocurridos dentro de Cataluña, sostenibilidad, acción
+        climática y protección de los bosques</p>
 
-      <h3>Navegación</h3>
+      <h2>Navegación</h2>
       <p><b>Consultas:</b> Consulta los incendios registrados por fecha o por comarca.</p>
       <p><b>Mapa:</b> Observa el mapa de incendios y zonas de riesgo.</p>
-      <p><b>API:</b> Utiliza la open API de la generalitat con los datos más actuales de 2025.</p>
-
-      <!--<section id="ods13">
-        <h1>ODS 13 - Acció pel Clima</h1>
-        <p>Els incendis forestals són una de les conseqüències greus del canvi climàtic. Descobreix com actuar.</p>
-    </section>
-
-    <section id="ods15">
-        <h1>ODS 15 - Vida Terrestre</h1>
-        <p>Protegir la biodiversitat forestal és essencial per garantir un futur sostenible.</p>
-    </section>-->
-
+      <p><b>API:</b> Utiliza la open API de la Generalitat con los datos más actuales de 2025.</p>
+      <p><b>ODS:</b> Consulta los objetivos de nuestros ODS.</p>
     </section>
 
     <section id="consultas">
-      <h2>Consulta de Incendios</h2>
+      <h1>Consulta de Incendios</h1>
 
       <label for="fecha-select">Selecciona una fecha:</label>
       <select id="fecha-select">
@@ -69,17 +61,17 @@
     </section>
 
     <section id="mapa_incendis">
-      <h2>Mapa d'Incendis</h2>
+      <h1>Mapa d'Incendis</h1>
       <div id="map_inc" style="height: 500px;"></div>
     </section>
 
     <section id="API_GEN">
-      <h2>API Gencat</h2>
+      <h1>API Gencat</h1>
       <p>Esta API de codigo abierto está basada en los incedios forestales de Catalunya en el año 2025, con detalle de
         la fecha, el municipio en el cuando se han iniciado y las superficies forestales y no forestales afectadas, en
         hectáreas.</p>
 
-      <h3>Tipos de datos</h3>
+      <h2>Tipos de datos</h2>
       <p><strong>DATA INCENDI:</strong> Data d’inici de l’incendi.</p>
       <p><strong>CODI COMARCA:</strong> Codi Idescat de la comarca.</p>
       <p><strong>COMARCA:</strong> Comarca d’inici de l’incendi.</p>
@@ -87,10 +79,11 @@
       <p><strong>TERMEMUNIC:</strong> Municipi d’inici de l’incendi.</p>
       <p><strong>HAARBRADES:</strong> Superfície forestal arbrada cremada, en hectàrees.</p>
       <p><strong>HANOARBRAD:</strong> Superfície forestal de matoll, herbàcia o pastura cremada, en hectàrees.</p>
-      <p><strong>HAFORESTAL:</strong> Superfície forestal cremada, en hectàrees. Suma la columna HaArbrades + HaNoArbrades.</p>
+      <p><strong>HAFORESTAL:</strong> Superfície forestal cremada, en hectàrees. Suma la columna HaArbrades +
+        HaNoArbrades.</p>
 
 
-      <h3>Endpoints</h3>
+      <h2>Endpoints</h2>
       <p></p>
       <!-- Aquí se insertarán los menús desplegables dinámicos -->
       <div id="dropdowns"></div>
@@ -107,8 +100,40 @@
       <button onclick="obtenerIncendios({ haforestal: '0.006' })">Hect. Forestales = 0.006</button>-->
 
       <pre id="output"></pre>
-
     </section>
+
+    <section id="ods">
+      <article class="ods-block">
+        <h1>ODS 13 - Acció pel Clima</h1>
+        <h2>Objetivos</h2>
+        <ul>
+          <li><strong>13.1</strong> Fortalecer la resiliencia y la capacidad de adaptación a los riesgos relacionados con el clima y los desastres naturales en todos los países.</li>
+          <li><strong>13.2</strong> Incorporar medidas relativas al cambio climático en las políticas, estrategias y planes nacionales.</li>
+          <li><strong>13.3</strong> Mejorar la educación, la sensibilización y la capacidad humana e institucional respecto de la mitigación del cambio climático, la adaptación a él, la reducción de sus efectos y la alerta temprana.</li>
+          <li><strong>13.a</strong> Cumplir el compromiso de los países desarrollados que son partes en la Convención Marco de las Naciones Unidas sobre el Cambio Climático de lograr para el año 2020 el objetivo de movilizar conjuntamente 100.000 millones de dólares anuales procedentes de todas las fuentes a fin de atender las necesidades de los países en desarrollo respecto de la adopción de medidas concretas de mitigación y la transparencia de su aplicación, y poner en pleno funcionamiento el Fondo Verde para el Clima capitalizándolo lo antes posible.</li>
+          <li><strong>13.b</strong> Promover mecanismos para aumentar la capacidad para la planificación y gestión eficaces en relación con el cambio climático en los países menos adelantados y los pequeños Estados insulares en desarrollo, haciendo particular hincapié en las mujeres, los jóvenes y las comunidades locales y marginadas.</li>
+        </ul>
+        <p class="ods-note"><em>* Reconociendo que la Convención Marco de las Naciones Unidas sobre el Cambio Climático es el principal foro intergubernamental internacional para negociar la respuesta mundial al cambio climático.</em></p>
+      </article>
+    
+      <article class="ods-block">
+        <h1>ODS 15 - Vida Terrestre</h1>
+        <h2>Objetivos</h2>
+        <ul>
+          <li><strong>15.1</strong> Para 2020, velar por la conservación, el restablecimiento y el uso sostenible de los ecosistemas terrestres y los ecosistemas interiores de agua dulce y los servicios que proporcionan, en particular los bosques, los humedales, las montañas y las zonas áridas, en consonancia con las obligaciones contraídas en virtud de acuerdos internacionales.</li>
+          <li><strong>15.2</strong> Para 2020, promover la gestión sostenible de todos los tipos de bosques, poner fin a la deforestación, recuperar los bosques degradados e incrementar la forestación y la reforestación a nivel mundial.</li>
+          <li><strong>15.3</strong> Para 2030, luchar contra la desertificación, rehabilitar las tierras y los suelos degradados, incluidas las tierras afectadas por la desertificación, la sequía y las inundaciones, y procurar lograr un mundo con una degradación neutra del suelo.</li>
+          <li><strong>15.4</strong> Para 2030, velar por la conservación de los ecosistemas montañosos, incluida su diversidad biológica, a fin de mejorar su capacidad de proporcionar beneficios esenciales para el desarrollo sostenible.</li>
+          <li><strong>15.5</strong> Adoptar medidas urgentes y significativas para reducir la degradación de los hábitats naturales, detener la pérdida de la diversidad biológica y, para 2020, proteger las especies amenazadas y evitar su extinción.</li>
+          <li><strong>15.6</strong> Promover la participación justa y equitativa en los beneficios que se deriven de la utilización de los recursos genéticos y promover el acceso adecuado a esos recursos, como se ha convenido internacionalmente.</li>
+          <li><strong>15.7</strong> Adoptar medidas urgentes para poner fin a la caza furtiva y el tráfico de especies protegidas de flora y fauna y abordar la demanda y la oferta ilegales de productos silvestres.</li>
+          <li><strong>15.8</strong> Para 2020, adoptar medidas para prevenir la introducción de especies exóticas invasoras y reducir de forma significativa sus efectos en los ecosistemas terrestres y acuáticos y controlar o erradicar las especies prioritarias.</li>
+          <li><strong>15.9</strong> Para 2020, integrar los valores de los ecosistemas y la diversidad biológica en la planificación nacional y local, los procesos de desarrollo, las estrategias de reducción de la pobreza y la contabilidad.</li>
+        </ul>
+      </article>
+    </section>
+    
+
   </main>
 
   <!-- Scripts -->
