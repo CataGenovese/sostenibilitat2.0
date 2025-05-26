@@ -14,7 +14,7 @@
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
 
   <!-- Conexion API -->
-  <script defer src="/script/api.js"></script>
+  <script defer src="/script/api_token.js"></script>
 
 </head>
 
@@ -91,8 +91,11 @@
 
       <h3>Endpoints</h3>
       <p></p>
+      <!-- Aquí se insertarán los menús desplegables dinámicos -->
+      <div id="dropdowns"></div>
 
-      <button onclick="obtenerIncendios({ data_incendi: '2025-01-11T00:00:00.000' })">Por Fecha</button>
+      <!-- Botones que usan un campo por defecto con un valor predeterminado para comprobar el funcionamento de la función obtenerIncendios()-->
+      <!--<button onclick="obtenerIncendios({ data_incendi: '2025-01-11T00:00:00.000' })">Por Fecha</button>
       <button onclick="obtenerIncendios({ codi_comarca: '11' })">Por Código Comarca</button>
       <button onclick="obtenerIncendios({ comarca: 'Baix Llobregat' })">Por Nombre Comarca</button>
       <button onclick="obtenerIncendios({ codi_municipi: '80898' })">Por Código Municipio</button>
@@ -100,7 +103,8 @@
       <button onclick="obtenerIncendios({ haarbrades: '0' })">Hectáreas Arboladas = 0</button>
       <button onclick="obtenerIncendios({ hanoarbrad: '0.006' })">Hect. No Arboladas = 0.006</button>
       <button onclick="obtenerIncendios({ hanoforest: '0' })">Hect. No Forestales = 0</button>
-      <button onclick="obtenerIncendios({ haforestal: '0.006' })">Hect. Forestales = 0.006</button>
+      <button onclick="obtenerIncendios({ haforestal: '0.006' })">Hect. Forestales = 0.006</button>-->
+      
       <pre id="output"></pre>
 
     </section>
