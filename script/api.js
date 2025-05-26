@@ -1,5 +1,5 @@
 const BASE_URL = "https://analisi.transparenciacatalunya.cat/resource/9r29-e8ha.json";
-const APP_TOKEN = "ISZKwx5fLfNNV_l_vd0ChqUENodaPj5vhxb2"; // Reemplaza por tu token real
+const APP_TOKEN = "ISZKwx5fLfNNV_l_vd0ChqUENodaPj5vhxb2"; // Tu token
 
 // para obtener tu propio token tienes que registrarte en la web https://analisi.transparenciacatalunya.cat/login
 //documentación para obtener el token: https://dev.socrata.com/docs/app-tokens.html
@@ -18,10 +18,7 @@ async function obtenerIncendios(params = {}, useToken = false) {
   });
 
   const url = `${BASE_URL}?${query.toString()}`;
-
-  const fetchOptions = useToken
-    ? { headers: { "X-App-Token": APP_TOKEN } }
-    : {};
+  const fetchOptions = useToken ? { headers: { "X-App-Token": APP_TOKEN } } : {};
 
   try {
     const respuesta = await fetch(url, fetchOptions);
@@ -84,11 +81,7 @@ async function getAll(campo, useToken = false) {
   });
 
   const url = `${BASE_URL}?${query.toString()}`;
-  console.log(url)
-
-  const fetchOptions = useToken
-    ? { headers: { "X-App-Token": APP_TOKEN } }
-    : {};
+  const fetchOptions = useToken ? { headers: { "X-App-Token": APP_TOKEN } } : {};
 
   try {
     const res = await fetch(url, fetchOptions);
@@ -97,7 +90,7 @@ async function getAll(campo, useToken = false) {
     return data
       .map(item => item[campo])
       .filter(v => v != null && v !== "")
-      .sort((a, b) => a.localeCompare(b, 'es'));
+      .sort((a, b) => a.toString().localeCompare(b.toString(), 'es'));
   } catch (error) {
     console.error(`Error al obtener valores únicos para ${campo}:`, error);
     return [];
@@ -105,7 +98,7 @@ async function getAll(campo, useToken = false) {
 }
 
 
-// Ejemplo para inicializar dropdowns usando token:
+// Ejemplo para inicializar dropdowns usando:
 document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("dropdowns");
   const campos = [
@@ -120,17 +113,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     "haforestal"
   ];
 
-  for (const campo of campos) {
-    // Crear label
-    const label = document.createElement("label");
-    label.setAttribute("for", `${campo}-select`);
-    label.textContent = `Filtrar por ${campo}:`;
-    container.appendChild(label);
+  // Guardamos los selects en un objeto para fácil acceso
+  const selects = {};
 
-    // Crear select
-    const select = document.createElement("select");
-    select.id = `${campo}-select`;
-    select.style.marginBottom = "1em";
+  // Función para cargar opciones para un select
+  async function cargarOpciones(campo) {
+    const select = selects[campo];
+    select.innerHTML = "";
 
     // Opción por defecto
     const defaultOption = document.createElement("option");
@@ -138,25 +127,53 @@ document.addEventListener("DOMContentLoaded", async () => {
     defaultOption.textContent = `--Selecciona ${campo}--`;
     select.appendChild(defaultOption);
 
-    // Obtener opciones sin token activado (false)
-    const opciones = await getAll(campo); // sin token
-
+    const opciones = await getAll(campo);
     opciones.forEach(valor => {
       const option = document.createElement("option");
       option.value = valor;
       option.textContent = valor;
       select.appendChild(option);
     });
+  }
 
-    // Evento cambio para filtrar sin token activado (false)
-    select.addEventListener("change", async () => {
-      const valorSeleccionado = select.value;
-      if (valorSeleccionado) {
-        await obtenerIncendios({ [campo]: valorSeleccionado }); // sin token 
+  // Función que se ejecuta al cambiar un select
+  async function onChangeSelect(campoCambiado) {
+    // Resetear los demás selects
+    for (const campo of campos) {
+      if (campo !== campoCambiado) {
+        selects[campo].selectedIndex = 0;
+        await cargarOpciones(campo); // recargar opciones
       }
-    });
+    }
+
+    // Hacer la petición filtrada con el valor seleccionado
+    const valor = selects[campoCambiado].value;
+    if (valor) {
+      await obtenerIncendios({ [campoCambiado]: valor });
+    } else {
+      document.getElementById("output").textContent = "";
+    }
+  }
+
+  // Crear todos los selects con sus labels
+  for (const campo of campos) {
+    const label = document.createElement("label");
+    label.setAttribute("for", `${campo}-select`);
+    label.textContent = `Filtrar por ${campo}:`;
+    container.appendChild(label);
+
+    const select = document.createElement("select");
+    select.id = `${campo}-select`;
+    selects[campo] = select;
+
+    // Evento change
+    select.addEventListener("change", () => onChangeSelect(campo));
 
     container.appendChild(select);
-    container.appendChild(document.createElement("br"));
+  }
+
+  // Cargar opciones iniciales para todos los selects
+  for (const campo of campos) {
+    await cargarOpciones(campo);
   }
 });
