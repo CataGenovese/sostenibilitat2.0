@@ -25,10 +25,6 @@ async function obtenerIncendios(params = {}) {
   }
 }
 
-/*obtenerIncendios({ "$limit": 5 }).then(data => {
-    console.log(data[0]); // así puedes ver los nombres exactos de los campos para filtrar
-  });*/
-
 /**
  * Devuelve todos los valores únicos de un campo.
  * @param {string} campo
@@ -59,9 +55,6 @@ const campos = [
   "hanoforest",
   "haforestal"
 ];
-
-document.addEventListener("DOMContentLoaded", async () => {
-  const container = document.getElementById("dropdowns");
 
   for (const campo of campos) {
     // Crea label
