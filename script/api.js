@@ -156,10 +156,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
 
-    // Añade al contenedor
     container.appendChild(select);
     container.appendChild(document.createElement("br"));
   }
 });
-
-
