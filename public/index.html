@@ -18,6 +18,10 @@
   <!-- Conexion API -->
   <script defer src="/script/api.js"></script>
 
+  <!-- Plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
 </head>
 
 <body>
@@ -42,7 +46,11 @@
       <p><b>Consultas:</b> Consulta los incendios registrados por fecha o por comarca.</p>
       <p><b>Mapa:</b> Observa el mapa de incendios y zonas de riesgo.</p>
       <p><b>API:</b> Utiliza la open API de la Generalitat con los datos más actuales de 2025.</p>
-      <p><b>ODS:</b> Consulta los objetivos de nuestros ODS.</p>
+      <p><b>ODS:</b> Consulta los objetivos de nuestros ODS.</p><br>
+
+      <h2>Gráfico de Incendios por Mes</h2>
+      <div id="grafico_incendios" style="width: 100%; max-width: 900px; height: 500px;"></div>
+      
     </section>
 
     <section id="consultas">
@@ -143,6 +151,8 @@
   <!-- Scripts -->
   <script src="/script/mapa.js"></script>
   <script src="main.js"></script>
+  <script src="/script/plotly_incendios.js"></script>
+
 
   <script>
     let mapaCargado = false;
