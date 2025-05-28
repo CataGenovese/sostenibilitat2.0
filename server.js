@@ -41,10 +41,10 @@ app.get("/incendios/date/:fecha", (req, res) => {
   const data = readData();
   const fecha = req.params.fecha;
   const filtered = data.filter(item => item["DATA_INCENDI"] === fecha)
-                       .map(item => ({
-                         comarca: item["COMARCA"],
-                         hectareas: item["HAFORESTAL"]
-                       }));
+    .map(item => ({
+      comarca: item["COMARCA"],
+      hectareas: item["HAFORESTAL"]
+    }));
   res.json(filtered);
 });
 
@@ -52,10 +52,10 @@ app.get("/incendios/comarca/:comarca", (req, res) => {
   const data = readData();
   const comarca = decodeURIComponent(req.params.comarca);
   const filtered = data.filter(item => item["COMARCA"] === comarca)
-                       .map(item => ({
-                         fecha: item["DATA_INCENDI"],
-                         hectareas: item["HAFORESTAL"]
-                       }));
+    .map(item => ({
+      fecha: item["DATA_INCENDI"],
+      hectareas: item["HAFORESTAL"]
+    }));
   res.json(filtered);
 });
 

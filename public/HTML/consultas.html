@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/CSS/consultas.css">
+    <script src="/server.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/public/HTML/consultas.html">Consultas</a></li>
+                <li><a href="/public/HTML/mapa_incendis.html">Mapa</a></li>
+                <li><a href="/public/HTML/API_GEN.html">API</a></li>
+                <li><a href="/public/HTML/ods.html">ODS</a></li>
+                <li><a href="/public/HTML/index.html">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="consultas">
+            <h1>Consulta de Incendios</h1>
+
+            <label for="fecha-select">Selecciona una fecha:</label>
+            <select id="fecha-select">
+                <option value="">-- Elige una fecha --</option>
+            </select>
+
+            <label for="comarca-select">Selecciona una comarca:</label>
+            <select id="comarca-select">
+                <option value="">-- Elige una comarca --</option>
+            </select>
+
+            <h3>Detalles:</h3>
+            <pre id="details"></pre>
+        </section>
+    </main>
+</body>
+
+</html>

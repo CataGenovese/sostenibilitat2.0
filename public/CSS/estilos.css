@@ -1,0 +1,81 @@
+/* Reset básico */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagen de fondo en pantalla completa */
+.background-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .glass {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(#fff2, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, margin 0.4s ease;
+  border-radius: 15px;
+  margin: 0 -10px;
+  backdrop-filter: blur(10px);
+  transform: rotate(calc(var(--r) * 1deg));
+}
+
+/* Efecto de hover global en el contenedor: alinea y separa todos los botones */
+.container:hover .glass {
+  transform: rotate(0deg);
+  margin: 0 10px;
+}
+
+/* Efecto individual al pasar el ratón por cada botón */
+.container .glass:hover {
+  transform: scale(1.1);
+  box-shadow: 0 25px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Texto dentro de cada botón */
+.container .glass::before {
+  content: attr(data-text);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.container .glass svg {
+  font-size: 2.5em;
+  fill: #fff;
+}

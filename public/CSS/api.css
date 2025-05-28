@@ -1,0 +1,138 @@
+/* Fuente y colores */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f9f4;
+    color: #1b5e20;
+  }
+
+header {
+    background-color: #4a6f47;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 1rem;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 8px;
+}
+
+nav a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+/* Sección principal */
+main {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2 {
+    color: #355e3b;
+    margin-bottom: 1rem;
+}
+
+/* Campos */
+.campos li {
+    margin-bottom: 0.5em;
+    font-size: 1rem;
+}
+
+/* Selects */
+select {
+    margin: 1rem 1rem 1rem 0;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid #4a6f47;
+    border-radius: 8px;
+    background-color: #eef5e9;
+    color: #2e382e;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #355e3b;
+    outline: none;
+}
+
+/* Pre */
+#output {
+    background-color: #eef5e9;
+    border: 1px solid #b6c9a9;
+    padding: 1rem;
+    margin-top: 2rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #2e382e;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ilustración */
+#visual {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#ilustracion {
+    max-width: 300px;
+    display: block;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Resultado de la consulta */
+#resultado {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #dff0d8;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: none;
+    /* Oculto por defecto */
+}
+
+#resultado.visible {
+    display: block;
+    /* Mostrar cuando haya un resultado */
+}

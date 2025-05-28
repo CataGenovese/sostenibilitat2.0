@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Gencat</title>
+  <link rel="stylesheet" href="../CSS/api.css" />
+  <script defer src="/public/script/api.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/public/HTML/consultas.html">Consultas</a></li>
+        <li><a href="/public/HTML/mapa_incendis.html">Mapa</a></li>
+        <li><a href="/public/HTML/API_GEN.html">API</a></li>
+        <li><a href="/public/HTML/ods.html">ODS</a></li>
+        <li><a href="/public/HTML/index.html">Inicio</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Reemplaza la sección <main> por esta versión actualizada -->
+    <main>
+      <section id="API_GEN">
+        <h1>API Gencat</h1>
+        <p>Consulta interactiva de incendios forestales en Catalunya en 2025.</p>
+
+        <h2>Campos disponibles</h2>
+        <ul class="campos">
+          <li><strong>DATA INCENDI:</strong> Fecha de inicio del incendio.</li>
+          <li><strong>CODI COMARCA:</strong> Código de comarca Idescat.</li>
+          <li><strong>COMARCA:</strong> Nombre de la comarca.</li>
+          <li><strong>CODI MUNICIPI:</strong> Código de municipio Idescat.</li>
+          <li><strong>TERMEMUNIC:</strong> Municipio del incendio.</li>
+          <li><strong>HAARBRADES:</strong> Hectáreas forestales arboladas.</li>
+          <li><strong>HANOARBRAD:</strong> Hectáreas de matoll o herbáceas.</li>
+          <li><strong>HAFORESTAL:</strong> Total forestal afectado (suma anterior).</li>
+        </ul>
+
+        <h2>Filtrar datos</h2>
+        <div id="dropdowns"></div>
+
+        <button id="buscarBtn" style="display: none;">Buscar</button>
+        <canvas id="grafico" width="400" height="200"></canvas>
+        <pre id="output"></pre>
+        <div id="dropdowns"></div>
+
+      </section>
+    </main>
+
+</body>
+
+</html>
+
+</main>
+</body>
+
+</html>
