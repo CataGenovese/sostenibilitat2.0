@@ -11,7 +11,7 @@ function initMapa() {
   const map = L.map('map_inc').setView([41.8, 1.6], 8);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-  Papa.parse("/public/datos/Incendis_con_coordenades_complet (1).csv", {
+  Papa.parse("/sostenibilitat2.0/carpeta/public/datos/Incendis_con_coordenades_complet (1).csv", {
     header: true,
     download: true,
     complete: function (results) {
