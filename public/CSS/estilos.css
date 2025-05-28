@@ -46,13 +46,13 @@ body {
 
 /* Efecto de hover global en el contenedor: alinea y separa todos los botones */
 .container:hover .glass {
-  transform: rotate(0deg);
+  transform: rotate(360deg);
   margin: 0 10px;
 }
 
 /* Efecto individual al pasar el ratón por cada botón */
 .container .glass:hover {
-  transform: scale(1.1);
+  transform: scale(1.5);
   box-shadow: 0 25px 35px rgba(0, 0, 0, 0.35);
 }
 

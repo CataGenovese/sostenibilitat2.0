@@ -1,47 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mapa d'Incendis</title>
-    <link rel="stylesheet" href="/public/CSS/mapa.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
-    <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa d'Incendis</title>
+  <link rel="stylesheet" href="/public/CSS/mapa.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js" defer></script>
+  <script src="/public/script/mapa.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/public/HTML/consultas.html">Consultas</a></li>
-                <li><a href="/public/HTML/mapa_incendis.html">Mapa</a></li>
-                <li><a href="/public/HTML/API_GEN.html">API</a></li>
-                <li><a href="/public/HTML/ods.html">ODS</a></li>
-                <li><a href="/public/index.html">Inicio</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/public/HTML/consultas.html">Consultas</a></li>
+        <li><a href="/public/HTML/mapa_incendis.html">Mapa</a></li>
+        <li><a href="/public/HTML/API_GEN.html">API</a></li>
+        <li><a href="/public/HTML/ods.html">ODS</a></li>
+        <li><a href="/public/index.html">Inicio</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section id="mapa_incendis">
-            <h1>Mapa d'Incendis</h1>
-            <div id="map_inc" style="height: 500px;"></div>
-        </section>
-    </main>
+  <main>
+    <section id="mapa_incendis">
+      <h1>Mapa d'Incendis</h1>
+      <div id="filtros" class="filtros"></div>
+      <div id="map_inc" style="height: 500px; margin-top: 1em;"></div>
+    </section>
+  </main>
 
-    <script src="/public/script/mapa.js" defer></script>
-    <script src="/public/main.js" defer></script>
-
-    <script>
-
-        // Carga por defecto
-        window.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('mapa_incendis').style.display = 'block';
-            initMapa();
-        });
-    </script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      initMapa();
+    });
+  </script>
 </body>
 
 </html>
